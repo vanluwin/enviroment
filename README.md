@@ -16,6 +16,14 @@ This script aims to install the CuDNN library, it needs the tgz file acquired fr
 sudo sh install-cudnn.sh
 ```
 
+## Change GCC/G++ Version
+
+This script aims to change the version of gcc/g++ to the one provided.
+
+```bash
+sudo sh switchGcVersion.sh <version>
+```
+
 ## Install OpenCV
 
 This script aims to compile the OpenCV library with CUDA support. Go to the the directory where you want to keep the downloaded files and execute:
