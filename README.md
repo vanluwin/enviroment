@@ -1,5 +1,7 @@
 # Scripts for setting up a development environment
 
+Beware that these scripts were made and tested for Ubuntu 16.04 and 18.04.
+
 ## Install nvidia gpu drivers
 
 This script installs the nvidia-390 drivers and freezes its version, for different behavior edit the last lines.
