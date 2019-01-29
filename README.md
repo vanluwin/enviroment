@@ -1,4 +1,4 @@
-# Scripts for setting up my environment
+# Scripts for setting up a development environment
 
 ## Install nvidia gpu drivers
 
