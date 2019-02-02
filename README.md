@@ -10,6 +10,14 @@ This script installs the nvidia-390 drivers and freezes its version, for differe
 sudo sh install-gpu-driver.sh
 ```
 
+## Install CUDA
+
+This script aims to install the CUDA library.
+
+```bash
+sudo sh install-cuda.sh
+```
+
 ## Install CuDNN
 
 This script aims to install the CuDNN library, it needs the tgz file acquired from nvidia site to be places next to it.
