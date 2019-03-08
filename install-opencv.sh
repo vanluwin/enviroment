@@ -40,7 +40,8 @@ cmake -D CMAKE_BUILD_TYPE=RELEASE \
     -D CUDA_FAST_MATH=1 \
     -D WITH_CUBLAS=1 \
     -D WITH_QT=1 \
-    -D OPENCV_EXTRA_MODULES_PATH=../../opencv_contrib-3.3.0/modules/
+    -D OPENCV_EXTRA_MODULES_PATH=../../opencv_contrib-3.3.0/modules/ \
+    ..
 
 make -j8
 sudo make install
