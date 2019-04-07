@@ -1,7 +1,6 @@
-#!/bin/sh
-
+#!/bin/bash
 if [ -z "$1" ]; then
-    echo "usage: sudo sh $0 version" 1>&2
+    echo "usage: sudo sh $0 #version" 1>&2
     exit 1
 fi
 
@@ -22,5 +21,5 @@ echo "Configuring Alternatives ..."
 sudo update-alternatives --config gcc
 sudo update-alternatives --config g++
 
-echo "Done"
+echo "Done!"
 

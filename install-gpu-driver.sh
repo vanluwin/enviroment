@@ -1,3 +1,4 @@
+#!/bin/bash
 echo "Deleting other version of nvidia drivers..."
 sudo apt-get purge nvidia* 
 
@@ -12,3 +13,5 @@ sudo apt-get install nvidia-390
 
 echo "Freezing driver version..."
 sudo apt-mark hold nvidia-390
+
+echo "Done!"
