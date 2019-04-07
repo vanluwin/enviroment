@@ -100,15 +100,6 @@ alias l='ls -CF'
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
-
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
@@ -132,6 +123,7 @@ alias up='sudo apt update && sudo apt upgrade'
 alias df='df -h'
 alias clone='git clone'
 alias install='sudo apt-get install'
+alias clipboard='xclip -sel clip'
 
 # Image edition
 alias cropToContent='convert -trim'
@@ -144,29 +136,29 @@ alias espUp='pio run -t upload --upload-port=/dev/ttyUSB0'
 # Python venvs
 alias python='python3'
 alias pip='pip3'
-alias ml='source /home/richard/envs/ml/bin/activate'
-alias serial='source /home/richard/envs/serial/bin/activate'
+alias ml='source activate ml'
+alias serial='source activate serial'
+alias gpu='source activate gpu'
 
 # FFMPEG
 extractAllFrames() {
-        if [ $# -ne 2 ]; then
-                echo "Missing arguments!"
-                return
-        fi
+    if [ $# -ne 2 ]; then
+        printf "Missing arguments!\nUsage: extractAllFrames video dst_folder\n"
+        return
+    fi
 
-        ffmpeg -i $1 $2/frame_%04d.png -hide_banner
+    ffmpeg -i $1 $2/frame_%04d.png -hide_banner
 }
 
 extractFPS() {
-        if [ $# -ne 3 ]; then
-                echo "Missing arguments!"
-                return
-        fi
+    if [ $# -ne 3 ]; then
+        printf "Missing arguments!\nUsage: extractFPS video dst_folder fps\n"
+        return
+    fi
 
-        ffmpeg -i $1 -vf $2/frame_%04d.png fps=$3 -hide_banner
+    ffmpeg -i $1 -vf $2/frame_%04d.png fps=$3 -hide_banner
 }
 
 # CUDA stuff
 export LD_LIBRARY_PATH=/usr/local/cuda-9.1/lib64:$LD_LIBRARY_PATH
 export PATH=/usr/local/cuda-9.1/bin:$PATH
-
