@@ -31,7 +31,7 @@ sudo sh install-cudnn.sh
 This script aims to change the version of gcc/g++ to the one provided.
 
 ```bash
-sudo sh switchGcVersion.sh <version>
+sudo sh switchGccVersion.sh <version>
 ```
 
 ## Install OpenCV

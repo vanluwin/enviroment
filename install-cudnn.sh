@@ -1,3 +1,4 @@
+#!/bin/bash
 # Unzip the cuDNN package
 echo "Extracting ..."
 tar -xzf cudnn-9.1.tgz || echo "Download cudnn tgz file first"
@@ -12,4 +13,4 @@ sudo chmod a+r /usr/local/cuda/include/cudnn.h /usr/local/cuda/lib64/libcudnn*
 echo "Cleaning ..."
 rm  -rf cuda/
 
-echo "Done"
+echo "Done!"
