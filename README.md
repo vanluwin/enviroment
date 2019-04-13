@@ -41,3 +41,7 @@ This script aims to compile the OpenCV library with CUDA support. Go to the the 
 ```bash
 sudo sh <path-to-script>/install-opencv.sh
 ```
+
+## Visual Studio Code Snippets
+
+Some snippets for C++ development. In VS Code go to File > Preferences > User Snippets them select c++ and add the contents of [cpp.json](./cpp.json) to your own file.

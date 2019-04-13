@@ -1,0 +1,65 @@
+{
+	"Basic structure": {
+		"prefix": "init",
+		"description": "Basic Structure For a CPP Program",
+		"body": [
+			"#include <iostream>",
+			"using namespace std;\n",
+			"int main(int argc, char **argv) {",
+			"\n\t$1\n",
+			"\treturn 0;\n}"
+		]
+	},
+
+	"Basic Header Structure": {
+		"prefix": "initc",
+		"description": "Basic Structure For a Class Header",
+		"body": [
+			"#ifndef ${TM_FILENAME_BASE/(.*)/${1:/upcase}/}_H",
+			"#define ${TM_FILENAME_BASE/(.*)/${1:/upcase}/}_H\n",
+			"class ${TM_FILENAME_BASE} {",
+			"\tprivate:",
+			"\t$1",
+			"\tpublic:",
+			"\t\t${TM_FILENAME_BASE}::${TM_FILENAME_BASE}();",
+			"\t\t${TM_FILENAME_BASE}::~${TM_FILENAME_BASE}();",
+			"\t$2",
+			"};\n",
+			"#endif // ${TM_FILENAME_BASE/(.*)/${1:/upcase}/}_H"
+		]
+	},
+
+	"Basic Class Body Structure": {
+		"prefix": "initcpp",
+		"description": "Basic Structure For a Class .CPP",
+		"body": [
+			"#include \"${TM_FILENAME_BASE}.hpp\"\n",
+			"// Class Constructor",
+			"${TM_FILENAME_BASE}::${TM_FILENAME_BASE}() {}\n",
+			"// Class Destructor",
+			"${TM_FILENAME_BASE}::~${TM_FILENAME_BASE}() {}"
+		]
+	},
+
+	"STDOUT": {
+		"prefix": "co",
+		"description": "Prints shit",
+		"body": "cout << \"$1\" "
+	},
+
+	"STDIN": {
+		"prefix": "ci",
+		"description": "Enters Shit",
+		"body": "cin >> $1"
+	},
+
+	"FOR": {
+		"prefix": "fo",
+		"description": "Good Old For",
+		"body": [
+			"for(int $1 = 0; $1 < $2; $1++) {",
+			"\t$3",
+			"}"
+		]
+	}
+}
