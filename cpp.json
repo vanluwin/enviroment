@@ -21,8 +21,8 @@
 			"\tprivate:",
 			"\t$1",
 			"\tpublic:",
-			"\t\t${TM_FILENAME_BASE}::${TM_FILENAME_BASE}();",
-			"\t\t${TM_FILENAME_BASE}::~${TM_FILENAME_BASE}();",
+			"\t\t${TM_FILENAME_BASE}();",
+			"\t\t~${TM_FILENAME_BASE}();",
 			"\t$2",
 			"};\n",
 			"#endif // ${TM_FILENAME_BASE/(.*)/${1:/upcase}/}_H"
