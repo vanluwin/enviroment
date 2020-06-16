@@ -136,27 +136,67 @@ alias espUp='pio run -t upload --upload-port=/dev/ttyUSB0'
 # Python venvs
 alias python='python3'
 alias pip='pip3'
-alias ml='source activate ml'
-alias serial='source activate serial'
-alias gpu='source activate gpu'
 
 # FFMPEG
 extractAllFrames() {
-    if [ $# -ne 2 ]; then
-        printf "Missing arguments!\nUsage: extractAllFrames video dst_folder\n"
-        return
-    fi
+	if [ $# -ne 2 ]; then
+		printf "Missing arguments!\nUsage: extractAllFrames video dst_folder\n"
+		return
+	fi
 
-    ffmpeg -i $1 $2/frame_%04d.png -hide_banner
+	ffmpeg -i $1 $2/%04d.png -hide_banner
 }
 
 extractFPS() {
-    if [ $# -ne 3 ]; then
-        printf "Missing arguments!\nUsage: extractFPS video dst_folder fps\n"
-        return
-    fi
+	if [ $# -ne 3 ]; then
+		printf "Missing arguments!\nUsage: extractFPS video fps dst_folder\n"
+		return
+	fi
 
-    ffmpeg -i $1 -vf $2/frame_%04d.png fps=$3 -hide_banner
+	ffmpeg -i $1 -vf fps=$2 $3/%04d.png -hide_banner
+
+}
+
+extractFirstFrame() {
+
+	if [ $# -ne 2 ]; then
+		printf "Missing arguments!\nUsage: video output\n"
+		return
+	fi
+
+	ffmpeg -i $1 -ss 00:00:01 -vframes 1 $2
+
+}
+
+extractAudio() {
+
+	if [ $# -ne 2 ]; then
+		printf "Missing arguments!\nUsage: extractAudio video output\n"
+		return
+	fi
+
+	ffmpeg -i $1 -f mp3 -ab 192000 -vn $2.mp3
+}
+
+videoFromImgs() {
+
+	if [ $# -ne 5 ]; then
+		printf "Missing arguments!\nUsage: fps frame_hwight frame_width images_dir output\n"
+		return
+	fi
+
+	ffmpeg -r $1 -f image2 -s $2x$3 -i $4/%04d.png -crf 25 -pix_fmt yuv420p $5
+}
+
+# GIF
+gifFromVideo() {
+	if [ $# -ne 4 ]; then
+		printf "Missing arguments!\nUsage: gifFromVideo video W H gif\n"
+		return
+	fi
+
+	ffmpeg -i $1 -s $2x$3 -pix_fmt rgb24 -r 10 -f gif - | gifsicle --optimize=3 --delay=3 > $4.gif
+
 }
 
 # CUDA stuff
